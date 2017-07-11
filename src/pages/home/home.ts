@@ -6,21 +6,11 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  message = 'Tap twice and press four times';
   tapped = 0;
   pressed = 0;
 
   constructor(public navCtrl: NavController) {
 
-  }
-
-
-  onWinning(){
-    if(this.tapped == 2 && this.pressed == 4){
-      this.message = "You Won";
-      this.tapped = 0;
-      this.pressed = 0;
-    }
   }
 
  //handles the event emitted by clicking reset buttons in the reset comp
@@ -42,9 +32,13 @@ export class HomePage {
    } else if (type == 'press'){
      this.pressed ++;
    }
-   this.onWinning();
-
  }
+
+ onWinning(){
+   //return true if condition is met and will alter the *ngIf in the home template
+  return this.tapped == 2 && this.pressed == 4;
+ }
+
 
 
 }
