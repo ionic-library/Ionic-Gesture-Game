@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Ionic Gestures Assignment
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content padding>
   <ion-grid>
    <ion-row>
-    <ion-col col-9 offset-2>
+    <ion-col text-center>
      <h1>Enter the right Code</h1>
      <p>{{message}}</p>
     </ion-col>
@@ -21,17 +21,12 @@
    <ion-item>Pressed: {{pressed}}</ion-item>
   </ion-list>
   <br>
-  <ion-grid>
-   <ion-row>
-    <ion-col class="cols" (click)="onResetAll()">Reset All</ion-col>
-    <ion-col class="cols" (click)="onResetTaps()">Reset Taps</ion-col>
-    <ion-col class="cols" (click)="onResetPress()">Reset Presses</ion-col>
-   </ion-row>
-  </ion-grid>
-  <ion-grid>
+  <app-reset (didReset)="onDidReset($event)"></app-reset>
+  <app-action (actionSelected)="onActionSelected($event)"></app-action>
+  <!-- <ion-grid>
    <ion-row>
     <ion-col class="action" (tap)="onTap()">Tap Here</ion-col>
     <ion-col class="action" (press)="onPress()">Press Here</ion-col>
    </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 </ion-content>

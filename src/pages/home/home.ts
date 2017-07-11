@@ -14,15 +14,6 @@ export class HomePage {
 
   }
 
-  onTap(){
-    this.tapped = this.tapped + 1;
-    this.onWinning();
-  }
-
-  onPress(){
-   this.pressed = this.pressed + 1;
-   this.onWinning();
-  }
 
   onWinning(){
     if(this.tapped == 2 && this.pressed == 4){
@@ -32,19 +23,28 @@ export class HomePage {
     }
   }
 
-  onResetAll(){
-    this.tapped = 0;
-    this.pressed = 0;
-  }
+ //handles the event emitted by clicking reset buttons in the reset comp
+ onDidReset(type: string){
+   if(type == 'all'){
+     this.tapped = 0;
+     this.pressed = 0;
+   } else if (type == 'tap'){
+     this.tapped = 0;
+   } else if (type == 'press'){
+     this.pressed = 0;
+   }
 
-  onResetTaps(){
-    this.tapped = 0;
+ }
 
-  }
+ onActionSelected(type: string){
+   if(type == 'tap' ){
+     this.tapped ++;
+   } else if (type == 'press'){
+     this.pressed ++;
+   }
+   this.onWinning();
 
-  onResetPress(){
-    this.pressed = 0;
-  }
+ }
 
 
 }
